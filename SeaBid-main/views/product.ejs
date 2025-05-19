@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sea Bid - Tienda</title>
+    <link rel="stylesheet" href="./product.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap">
+</head>
+<body>
+    <!-- Contenedor Principal -->
+    <div class="examples-product-page">
+        <!-- Barra de Navegación -->
+        <%- include('partials/header') %>
+
+        <!-- Contenido de la Tienda -->
+        <div class="shop-container" style="justify-content: center;">
+            <!-- Sección de Productos -->
+            <div class="main-content">
+                <div class="search-bar">
+                    <form action="/products" method="GET">
+                        <input type="text" name="search" placeholder="Search" value="<%= searchQuery %>">
+                    </form>
+                </div>
+                <div class="filter-buttons">
+                    <a href="/products?search=<%= searchQuery %>&sort=new" class="filter-btn <%= sort === 'new' ? 'active' : '' %>">✔ New</a>
+                    <a href="/products?search=<%= searchQuery %>&sort=price_asc" class="filter-btn <%= sort === 'price_asc' ? 'active' : '' %>">Price ascending</a>
+                    <a href="/products?search=<%= searchQuery %>&sort=price_desc" class="filter-btn <%= sort === 'price_desc' ? 'active' : '' %>">Price descending</a>
+                </div>
+                <div class="product-grid">
+                    <!-- Tarjetas de Productos -->
+                    <% products.forEach(product => { %>
+                    <div class="product-card">
+                        <a href="/products/<%= product.ProductID %>"><img src="/uploads/<%= product.Imagen %>" alt="<%= product.TipoDePescado %>"></a>
+                        <h3><%= product.TipoDePescado %></h3>
+                        <p>Price: $<%= product.Precio %></p>
+                    </div>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script> 
+</body>
+</html>

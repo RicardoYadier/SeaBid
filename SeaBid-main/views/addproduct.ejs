@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Sea Bid - Agregar Producto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jura:wght@700&display=swap">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #ffffff;
+        }
+
+        .header {
+            background-color: #233845;
+            padding: 16px 0;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        .user-icon {
+            position: absolute;
+            top: 50%;
+            right: 24px;
+            transform: translateY(-50%);
+        }
+
+        .user-icon img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .navigation-pill-list {
+            display: flex;
+            gap: 24px;
+        }
+
+        .navigation-pill a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+            font-weight: bold;
+        }
+
+        .navigation-pill a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .navigation-pill a.active {
+            background-color: #ffffff;
+            color: #233845 !important;
+        }
+
+        .hero-form {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+        }
+
+        .title7 {
+            font-size: 48px;
+            font-weight: bold;
+            color: #1e1e1e;
+            margin-bottom: 32px;
+        }
+
+        .form-contact {
+            background-color: #ffffff;
+            border: 1px solid #d9d9d9;
+            padding: 32px;
+            border-radius: 12px;
+            max-width: 500px;
+            width: 100%;
+            text-align: left;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .input-field {
+            margin-bottom: 16px;
+        }
+
+        .input-field label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #233845;
+            margin-bottom: 6px;
+        }
+
+        .input-field input,
+        .input-field textarea {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #d9d9d9;
+            font-size: 16px;
+            color: #233845;
+            width: 100%;
+        }
+
+        .button4 {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .button4:hover {
+            background-color: #444444;
+        }
+
+        .navigation-pill a,
+        .navigation-pill a:visited {
+            color: #ffffff;
+        }
+
+        .navigation-pill a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* o usa transparent si prefieres quitarlo */
+            color: #ffffff !important;
+        }
+
+        /* Mejora visual para que las cajas no se desborden */
+        * {
+            box-sizing: border-box;
+        }
+
+        /* Asegura que todos los input, textarea y button estén uniformes */
+        input,
+        textarea,
+        button {
+            max-width: 100%;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <%- include('partials/header') %>
+
+    <div class="hero-form">
+        <h1 class="title7">Add Product</h1>
+        <div class="form-contact">
+            <form action="/products" method="POST" enctype="multipart/form-data">
+                <!-- Fish Type -->
+                <div class="input-field">
+                    <label for="TipoDePescado">Fish Type</label>
+                    <input type="text" id="TipoDePescado" name="TipoDePescado" placeholder="Enter fish type" required>
+                </div>
+
+                <!-- Price -->
+                <div class="input-field">
+                    <label for="Precio">Price</label>
+                    <input type="number" id="Precio" name="Precio" step="0.01" placeholder="Enter price" required>
+                </div>
+
+                <!-- Description -->
+                <div class="input-field">
+                    <label for="Descripcion">Description</label>
+                    <textarea id="Descripcion" name="Descripcion" rows="3" placeholder="Enter description" required></textarea>
+                </div>
+
+                <!-- Weight -->
+                <div class="input-field">
+                    <label for="Peso">Weight</label>
+                    <input type="number" id="Peso" name="Peso" step="0.01" placeholder="Enter weight" required>
+                </div>
+
+                <!-- Date -->
+                <div class="input-field">
+                    <label for="Fecha">Date</label>
+                    <input type="date" id="Fecha" name="Fecha" required>
+                </div>
+
+                <!-- Image -->
+                <div class="input-field">
+                    <label for="image">Image</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="button4">Add Product</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
